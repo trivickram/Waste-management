@@ -42,7 +42,7 @@ def predict_waste_type(model, image):
     processed_img = preprocess_image(image)
     predictions = model.predict(processed_img)
     predicted_class_index = np.argmax(predictions, axis=1)[0]
-    confidence = np.max(predictions) * 100
+    confidence = float(np.max(predictions) * 100)
     predicted_class = CLASS_LABELS[predicted_class_index]
     return predicted_class, confidence, predictions[0]
 
